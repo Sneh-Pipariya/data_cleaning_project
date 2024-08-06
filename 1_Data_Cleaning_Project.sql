@@ -47,7 +47,7 @@ SET company = TRIM(company);
 
 UPDATE layoffs_staging
 SET country = TRIM(TRAILING '.' FROM country)
-WHERE country LIKE 'United States.%';
+WHERE country LIKE 'United States%';
 
 -- change date column from text format to date format
 UPDATE layoffs_staging
@@ -57,17 +57,19 @@ ALTER TABLE layoffs_staging
 MODIFY COLUMN `date` DATE;
 
 -- 5) Working with NULL and BLANK values
-select * from layoffs_staging where company='Airbnb';
+SELECT * 
+FROM layoffs_staging 
+WHERE company='Airbnb';
 
 UPDATE layoffs_staging
-set industry = NULL
-where industry = '';
+SET industry = NULL
+WHERE industry = '';
 
 -- remove records which have null values in columns total_laid_off and percentage_laid_off
-delete
-from layoffs_staging
-where total_laid_off is null
-and percentage_laid_off is null;
+DELETE
+FROM layoffs_staging
+WHERE total_laid_off IS NULL
+AND percentage_laid_off IS NULL;
 
 
 select * from layoffs;
