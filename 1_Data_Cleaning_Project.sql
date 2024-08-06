@@ -72,5 +72,5 @@ WHERE total_laid_off IS NULL
 AND percentage_laid_off IS NULL;
 
 
-select * from layoffs;
-select * from layoffs_staging; 
+SELECT * FROM layoffs;
+SELECT * FROM layoffs_staging; 
